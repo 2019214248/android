@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.text.TextUtils;//该类处理字符串
-/////
+/////?????
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     Button []num=new Button[10];
     Button spot,mul,div,plus,min,cls,del,equal;
