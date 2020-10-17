@@ -5,10 +5,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.text.TextUtils;//该类处理字符串
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     Button []num=new Button[10];
-    Button spot,mul,div,plus,min,cls,equal;
+    Button spot,mul,div,plus,min,cls,del,equal;
     EditText result;
     boolean clr_flag=false;
 
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mul=findViewById(R.id.mul);
         div=findViewById(R.id.div);
         cls=findViewById(R.id.cls);
+        del=findViewById(R.id.del);
         equal=findViewById(R.id.equal);
         result=findViewById(R.id.result);
 
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mul.setOnClickListener(this);
         div.setOnClickListener(this);
         cls.setOnClickListener(this);
+        del.setOnClickListener(this);
         equal.setOnClickListener(this);
     }
 
@@ -90,8 +93,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 str="";
                 result.setText("");
                 break;
+            //清除按钮，若当前文本编辑框内容为空，点击一次则删除一个字符串
+            case R.id.del:
+                if (TextUtils.isEmpty(result.getText())) {
+                    return;
+                }
+                clr_flag = false;
+                result.setText(str.substring(0, str.length() - 1).length() > 0 ? str.substring(0, str.length() - 1) : "0");
+                break;
             case R.id.equal: //单独运算最后结果
-                getResult();//调用下面的方法
+                getResult();
                 break;
         }
     }
