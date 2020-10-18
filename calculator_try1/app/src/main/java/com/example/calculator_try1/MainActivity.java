@@ -5,13 +5,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.text.TextUtils;//该类处理字符串
+import android.text.TextUtils;//TextUtils类处理字符串
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     Button []num=new Button[10];
     Button spot,mul,div,plus,min,cls,del,equal;
     EditText result;
-    boolean clr_flag=false;
+    boolean flag=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,8 +66,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case   R.id.eight:
             case   R.id.nine:
             case   R.id.spot:
-                if(clr_flag){
-                    clr_flag=false;
+                if(flag){
+                    flag=false;
                     str="";
                     result.setText("");
                 }
@@ -77,8 +77,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.min:
             case R.id.mul:
             case R.id.div:
-                if(clr_flag){
-                    clr_flag=false;
+                if(flag){
+                    flag=false;
                     str="";
                     result.setText("");
                 }
@@ -88,8 +88,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 result.setText(str+" "+((Button)v).getText()+" ");
                 break;
             case R.id.cls:
-                if(clr_flag)
-                    clr_flag=false;
+                if(flag)
+                    flag=false;
                 str="";
                 result.setText("");
                 break;
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (TextUtils.isEmpty(result.getText())) {
                     return;
                 }
-                clr_flag = false;
+                flag = false;
                 result.setText(str.substring(0, str.length() - 1).length() > 0 ? str.substring(0, str.length() - 1) : "0");
                 break;
             case R.id.equal: //单独运算最后结果
@@ -113,11 +113,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(!exp.contains(" ")){
             return ;
         }
-        if(clr_flag){
-            clr_flag=false;
+        if(flag){
+            flag=false;
             return;
         }
-        clr_flag=true;
+        flag=true;
         //截取运算符前面的字符串
         String s1=exp.substring(0,exp.indexOf(" "));
         //截取的运算符
