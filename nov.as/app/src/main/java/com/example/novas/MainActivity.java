@@ -17,13 +17,14 @@ public class MainActivity extends AppCompatActivity {
     private Button mCheatButton;
     private TextView mQuestionTextView;
     private Question[] mQuestionBank=new Question[]{
-            new Question(R.string.question_australia,true),
-            new Question(R.string.question_mideast,true),
-            new Question(R.string.question_oceans,false)
+            new Question(R.string.question_australia,true,0),
+            new Question(R.string.question_mideast,true,0),
+            new Question(R.string.question_oceans,false,0)
     };
     private int mCurrentIndex=0;
     private static final int REQUEST_CODE_CHEAT = 0;
     private boolean mIsCheater;
+    private static final String KEY_Ansewer="KEY_Ansewer";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
